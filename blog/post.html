@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Post — Conroy Studio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <nav>
+    <a href="../index.html">Home</a> <span class="sep">/</span>
+    <a href="../projects.html">Projects</a> <span class="sep">/</span>
+    <a href="../blog.html">Blog</a> <span class="sep">/</span>
+    <a href="../contact.html">Contact</a>
+  </nav>
+
+  <div id="post-content">Loading...</div>
+
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const post = params.get('post');
+    if (post) {
+      fetch(post + '.md')
+        .then(res => {
+          if (!res.ok) throw new Error('Post not found');
+          return res.text();
+        })
+        .then(md => {
+          document.getElementById('post-content').innerHTML = marked.parse(md);
+          const h1 = document.querySelector('#post-content h1');
+          if (h1) document.title = h1.textContent + ' — Conroy Studio';
+        })
+        .catch(() => {
+          document.getElementById('post-content').textContent = 'Post not found.';
+        });
+    } else {
+      document.getElementById('post-content').textContent = 'No post specified.';
+    }
+  </script>
+</body>
+</html>
