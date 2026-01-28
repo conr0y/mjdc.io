@@ -17,14 +17,38 @@
 
   <h1>Get in Touch</h1>
 
-  <p>Email: <a href="mailto:you@example.com">you@example.com</a></p>
+  <form action="https://formspree.io/f/mlgbyqaz" method="POST">
+    <label for="name">Name</label>
+    <input type="text" id="name" name="name" required>
+
+    <label for="email">Email</label>
+    <input type="email" id="email" name="email" required>
+
+    <label for="message">Message</label>
+    <textarea id="message" name="message" rows="5" required></textarea>
+
+    <button type="submit" id="btn" disabled>Send</button>
+  </form>
+
+  <script>
+    const form = document.querySelector('form');
+    const btn = document.getElementById('btn');
+    form.addEventListener('input', () => {
+      if (form.checkValidity()) {
+        btn.disabled = false;
+        btn.classList.add('active');
+      } else {
+        btn.disabled = true;
+        btn.classList.remove('active');
+      }
+    });
+  </script>
 
   <hr>
 
   <p class="secondary">
     <a href="#">GitHub</a> <span class="sep">/</span>
-    <a href="#">LinkedIn</a> <span class="sep">/</span>
-    <a href="#">Twitter</a>
+    <a href="#">LinkedIn</a>
   </p>
 </body>
 </html>
