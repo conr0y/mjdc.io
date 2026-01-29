@@ -1,6 +1,6 @@
 # Hello World
 
-This is the first post on Conroy Studio.
+This is the first post on mjdc.io.
 
 Nothing fancy here — just a simple site built with HTML, CSS, and a bit of markdown. No frameworks, no build tools, no nonsense.
 

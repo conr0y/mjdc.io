@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Post — Conroy Studio</title>
+  <title>Post — mjdc.io</title>
   <link href="https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../style.css">
 </head>
@@ -30,7 +30,7 @@
         .then(md => {
           document.getElementById('post-content').innerHTML = marked.parse(md);
           const h1 = document.querySelector('#post-content h1');
-          if (h1) document.title = h1.textContent + ' — Conroy Studio';
+          if (h1) document.title = h1.textContent + ' — mjdc.io';
         })
         .catch(() => {
           document.getElementById('post-content').textContent = 'Post not found.';
